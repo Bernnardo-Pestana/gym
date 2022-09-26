@@ -3,6 +3,8 @@ import { ClientModule } from './client/client.module'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import {EmployeeModule} from './employee/employee.module'
+import { ExerciceModule } from './exercice/exercice.module';
+import { RegisterModule } from './register/register.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import {EmployeeModule} from './employee/employee.module'
     ConfigModule.forRoot({ isGlobal: true }),
     ClientModule,
     EmployeeModule,
+    RegisterModule,
+    ExerciceModule,
 
   ],
   controllers: [],
