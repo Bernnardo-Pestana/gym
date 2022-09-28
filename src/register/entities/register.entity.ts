@@ -1,9 +1,11 @@
 import { IsDate, IsNumber, IsString } from "class-validator";
+import { RegisterWorkout } from "src/register_workout/entities/register_workout.entity";
 import { Entity,
     PrimaryGeneratedColumn,
     Column,
     OneToOne,
-    JoinColumn, 
+    JoinColumn,
+    OneToMany, 
 } from "typeorm";
 import {Client} from '../../client/entitities/client.entity'
 
@@ -28,6 +30,9 @@ export class Register {
     @OneToOne( ()=> Client)
     @JoinColumn({ name: "client_ID" })
         client : Client;
+
+    @OneToMany(() => RegisterWorkout, (register_workout) => register_workout.id)
+   register_workout: RegisterWorkout[]
 
 }
 

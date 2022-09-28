@@ -2,9 +2,12 @@ import { Module } from '@nestjs/common';
 import { ClientModule } from './client/client.module'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import {EmployeeModule} from './employee/employee.module'
+import  {EmployeeModule } from './employee/employee.module'
 import { ExerciceModule } from './exercice/exercice.module';
 import { RegisterModule } from './register/register.module';
+import { WorkoutModule } from './workout/workout.module';
+import { RegisterWorkout } from './register_workout/entities/register_workout.entity';
+import { ExerciceWorkout } from './exercice_workout/entities/exercice_workout.entity';
 
 @Module({
   imports: [
@@ -25,6 +28,9 @@ import { RegisterModule } from './register/register.module';
     EmployeeModule,
     RegisterModule,
     ExerciceModule,
+    WorkoutModule,
+    ExerciceWorkout,
+    RegisterWorkout,
 
   ],
   controllers: [],
