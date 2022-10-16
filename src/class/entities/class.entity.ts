@@ -1,5 +1,4 @@
 import {  IsDate, IsString } from 'class-validator';
-import { RegisterWorkout } from '../../register_workout/entities/register_workout.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 import { Employee } from '../../employee/entities/employee.entity';
 
