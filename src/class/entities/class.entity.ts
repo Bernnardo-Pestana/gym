@@ -1,22 +1,26 @@
-import {  IsString } from 'class-validator';
+import {  IsDate, IsString } from 'class-validator';
 import { RegisterWorkout } from '../../register_workout/entities/register_workout.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
+import { Employee } from '../../employee/entities/employee.entity';
 
 @Entity()
-export class Exercice {
+export class Classes {
     @PrimaryGeneratedColumn()
-    id: number;
+        id: number;
 
-  @IsString()
-  @Column({ type: "varchar", length: 100 })
-    nome: string;
+    @IsString()
+    @Column({ type: "varchar", length: 100 })
+     nome: string;
 
-  @IsString()
-  @Column({ type: "varchar", length: 30 })
-    type: string;
+    @Column({ type: 'datetime' })
+     time: Date | string;
 
-  @OneToMany(() => RegisterWorkout, (register_workout) => register_workout.id)
-    register_workout: RegisterWorkout[]
+    @IsDate()
+    @Column({ type: 'date' })
+     data: Date;
+
+    @ManyToOne(() => Employee, (employee) => employee.id)
+    employee: Employee
      
 
 }

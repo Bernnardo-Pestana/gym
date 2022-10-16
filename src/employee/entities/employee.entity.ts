@@ -1,4 +1,5 @@
 import {  IsString } from 'class-validator';
+import { Classes } from '../../class/entities/class.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 
 @Entity()
@@ -29,5 +30,10 @@ export class Employee {
   @IsString()
   @Column({ type: "decimal"})
     salary: number;
+
+
+  @OneToMany(() => Classes, (classes) => classes.id)
+  @JoinColumn({name:'id'})
+    class: Classes
 
 }
