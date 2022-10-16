@@ -8,6 +8,9 @@ import { RegisterModule } from './register/register.module';
 import { WorkoutModule } from './workout/workout.module';
 import { RegisterWorkout } from './register_workout/entities/register_workout.entity';
 import { ExerciceWorkout } from './exercice_workout/entities/exercice_workout.entity';
+import { ClassClient } from './class_client/entities/class_client.entity';
+import { Classes } from './class/entities/class.entity';
+
 
 @Module({
   imports: [
@@ -31,6 +34,9 @@ import { ExerciceWorkout } from './exercice_workout/entities/exercice_workout.en
     WorkoutModule,
     ExerciceWorkout,
     RegisterWorkout,
+    ClassClient,
+    Classes,
+
 
   ],
   controllers: [],

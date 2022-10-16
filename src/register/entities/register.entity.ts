@@ -7,7 +7,7 @@ import { Entity,
     JoinColumn,
     OneToMany, 
 } from "typeorm";
-import {Client} from '../../client/entitities/client.entity'
+import {Client} from '../../client/entities/client.entity'
 
 @Entity()
 export class Register {

@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import {ClientService} from './client.service'
 import {CreateClientDto} from './dto/create-client.dto'
-import { Client } from './entitities/client.entity';
+import { Client } from './entities/client.entity';
 
 describe('ClientService', () => {
     let service: ClientService;
