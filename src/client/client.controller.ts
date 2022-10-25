@@ -15,11 +15,16 @@ export class ClientController {
 
     @Post()
     async create(@Body() body:  CreateClientDto ){
-        return await this.clientService.create( body);
+        return await this.clientService.create(body);
     }
 
     @Put(":id")
     async update(@Param("id") id :number, @Body() body:  CreateClientDto ){
         return await this.clientService.update( id, body);
+    }
+
+    @Get(":id")
+    async findbyID(@Param("id") id :number){
+        return await this.clientService.getclientbyid(id);
     }
 }

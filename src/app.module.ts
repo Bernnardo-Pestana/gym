@@ -2,7 +2,7 @@
 import { ClassEmployeeModule } from './class_employee/class_employee.module';
 import { Module } from '@nestjs/common';
 import { ClientModule } from './client/client.module'
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { EmployeeModule } from './employee/employee.module'
 import { ExerciceModule } from './exercice/exercice.module';
@@ -13,22 +13,12 @@ import { RegisterWorkoutModule } from './register_workout/register_workout.modul
 import { ExerciceWorkoutModule } from './exercice_workout/exercice_workout.module';
 import { ClassClientModule } from './class_client/class_client.module';
 import { ClassesModule } from './class/class.module';
+import connectionOptions from './ormconfig';
 
 
 @Module({
   imports: [
-    TypeOrmModule.forRootAsync({
-      useFactory: () => ({
-        type: 'mysql',
-        host: process.env.DB_HOST,
-        port: 3306,
-        username: `root`,
-        password: `Txai1990`,
-        database: `gym`,
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: true
-      })
-    }),
+    TypeOrmModule.forRoot(connectionOptions as TypeOrmModuleOptions),
     ConfigModule.forRoot({ isGlobal: true }),
     ClientModule,
     EmployeeModule,

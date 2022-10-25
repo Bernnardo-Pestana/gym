@@ -1,5 +1,5 @@
 import {  IsString } from 'class-validator';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Client {
@@ -11,11 +11,11 @@ export class Client {
     nome: string;
 
   @IsString()
-  @Column({ type: "char", length: 11 })
+  @Column({ type: "varchar", length: 15 })
     cpf: string;
 
   @IsString()
-  @Column({ type: "char", length: 11 })
+  @Column({ type: "varchar", length:20 })
     telefone: string;
   
   @IsString()
