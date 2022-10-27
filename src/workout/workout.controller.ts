@@ -15,11 +15,21 @@ export class WorkoutController {
 
     @Post()
     async create(@Body() body:  createWorkout ){
-        return await this.workoutService.create( body);
+        return await this.workoutService.create(body);
     }
 
     @Put(":id")
-    async update(@Param("id") id :number, @Body() body:  createWorkout ){
+    async update(@Param("id") id :number, @Body() body:  any ){
         return await this.workoutService.update( id, body);
+    }
+
+    @Get(":id")
+    async findById(@Param("id") id :number,){
+        return await this.workoutService.getById(id);
+    }
+
+    @Get(":id/exercice")
+    async findExerciceByWorkoutID(@Param("id") id :number,){
+        return await this.workoutService.findExerciceByWorkoutID(id);
     }
 }

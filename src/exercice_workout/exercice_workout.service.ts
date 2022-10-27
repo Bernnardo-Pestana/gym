@@ -6,12 +6,58 @@ export class ExerciceWorkoutService  {
     
     constructor(
         @InjectRepository(ExerciceWorkout)
-         private registerRepository: Repository<ExerciceWorkout>,
+         private ExeWorRepository: Repository<ExerciceWorkout>,
     ) {}
 
-    async create(){}
+    async create(body){
+        try{
+            const treino = body.treino_id
+            const lista = body.lista;
 
-    async update(){}
+            lista.map( async element =>{
+                const obj = {
+                    workout : treino,
+                    exercice : element.id,
+                    peso : element.peso ,
+                    serie :element.serie,
+                    descanco : element.descanco,
+                    observacao: element.observacao,
+                    repeticao: element.repeticao,
+                }
+
+                await this.ExeWorRepository.save(obj)
+            })
+
+
+        }catch(e){
+            console.log(e)
+        }
+    }
+
+    async update(body){
+        try{
+            const treino = body.treino_id
+            const lista = body.lista;
+
+            lista.map( async element =>{
+                const obj = {
+                    workout : treino,
+                    exercice : element.id,
+                    peso : element.peso ,
+                    serie :element.serie,
+                    descanco : element.descanco,
+                    observacao: element.observacao,
+                    repeticao: element.repeticao,
+                }
+
+                await this.ExeWorRepository.save(obj)
+            })
+
+
+        }catch(e){
+            console.log(e)
+        }
+    }
 
     async delete(){}
 }

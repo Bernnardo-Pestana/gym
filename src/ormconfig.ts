@@ -9,7 +9,7 @@ const connectionOptions = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     entities: ["dist/**/**.entity{.ts,.js}"],
-    synchronize: false, //Setting synchronize: true shouldn't be used in production - and I`m not using migrations
+    synchronize: true, //Setting synchronize: true shouldn't be used in production - and I`m not using migrations
     dropSchema: false,
     dropTable: false,
     migrationsRun: false, // Run migrations automatically, you can disable this if you prefer running migration manually.

@@ -1,4 +1,4 @@
-import { Controller, Post } from "@nestjs/common";
+import { Body, Controller, Post, Put } from "@nestjs/common";
 import { ExerciceWorkoutService } from "./exercice_workout.service";
 
 @Controller('exercice_workout')
@@ -9,7 +9,12 @@ export class ExerciceWorkoutController {
 
 
     @Post()
-    async create(){
-        return await this.exerciceworkoutservice.create();
+    async create(@Body() body: any){
+        return await this.exerciceworkoutservice.create(body);
+    }
+
+    @Put()
+    async update(@Body() body: any){
+        return await this.exerciceworkoutservice.update(body);
     }
 }

@@ -11,11 +11,11 @@ export class Client {
     nome: string;
 
   @IsString()
-  @Column({ type: "varchar", length: 15 })
+  @Column({ length: 18 })
     cpf: string;
 
   @IsString()
-  @Column({ type: "varchar", length:20 })
+  @Column({ length:20 })
     telefone: string;
   
   @IsString()

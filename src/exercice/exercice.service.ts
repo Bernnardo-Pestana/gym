@@ -11,7 +11,6 @@ export class ExerciceService{
     ){}
 
     async getAll(){
-        console.log( await this.exerciceRepository.find())
         return await this.exerciceRepository.find()
     }
 

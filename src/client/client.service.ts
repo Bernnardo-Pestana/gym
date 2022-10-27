@@ -34,7 +34,6 @@ export class ClientService {
 
         return this.clientRepository.save(body);
     
-        return true;
     }
 
     async getclientbyid(id:number)
