@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, UseGuards, Body, Put, UseInterceptors, UploadedFile, Inject} from '@nestjs/common';
+import { Controller, Get, Param, Post, UseGuards, Body, Put, UseInterceptors, UploadedFile, Inject, Delete} from '@nestjs/common';
 import { CreateExercicioDto } from './dto/create-exercice';
 import { ExerciceService } from './exercice.service';
 
@@ -27,5 +27,10 @@ export class ExerciceController {
     @Get(":id")
     async getbyID(@Param(":id") id :number){
         return await this.exerciceService.getbyID(id);
+    }
+
+    @Post("/delete")
+    async delete(@Body() body){
+        return await this.exerciceService.delete(body.id);
     }
 }

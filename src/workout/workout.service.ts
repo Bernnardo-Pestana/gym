@@ -70,4 +70,13 @@ export class WorkoutService {
             console.log(error)
         }
     }
+
+    async delete(id: number)
+    {
+        try {
+            return await this.workoutRepository.delete({id:id})
+        } catch (error) {
+            
+        }
+    }
 }

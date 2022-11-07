@@ -38,4 +38,13 @@ export class ExerciceService{
          console.log(error)
         }
     }
+
+    async delete(id : number)
+    {
+        try {
+            return await this.exerciceRepository.delete({id:id})
+        } catch (error) {
+            
+        }
+    }
 }

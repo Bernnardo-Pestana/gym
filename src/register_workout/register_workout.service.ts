@@ -9,4 +9,28 @@ export class RegisterWorkoutService {
         private registerRepository: Repository<RegisterWorkout>,
     ){}
 
+    async create(body :any)
+    {
+        try {
+            const user = body.user_id;
+            const treinos = body.treino;
+
+            for(const treino of treinos)
+            {
+                const t = {
+                    register : user,
+                    workout : treino.id
+                }
+
+
+                await this.registerRepository.save(t);
+            }
+
+
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 }

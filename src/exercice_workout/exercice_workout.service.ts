@@ -2,6 +2,8 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { ExerciceWorkout } from "./entities/exercice_workout.entity";
 
+import {Connection} from "typeorm";
+
 export class ExerciceWorkoutService  { 
     
     constructor(
@@ -59,5 +61,14 @@ export class ExerciceWorkoutService  {
         }
     }
 
-    async delete(){}
+
+    async delete(id :number){
+        try {
+        
+           await this.ExeWorRepository.delete({id:id})
+  
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

@@ -6,7 +6,7 @@ import { Entity,
     JoinColumn,
     ManyToOne, 
 } from "typeorm";
-import {Register} from '../../register/entities/register.entity'
+import {Client} from '../../client/entities/client.entity'
 import { Workout } from '../../workout/entities/workout.entity'
 
 @Entity()
@@ -18,8 +18,8 @@ export class RegisterWorkout {
     @ManyToOne(() => Workout, (workout) => workout.id)
     workout: Workout
 
-    @ManyToOne(() => Register, (register) => register.id)
-    register: Register
+    @ManyToOne(() => Client, (client) => client.id)
+    register: Client
 
 
 }
