@@ -1,3 +1,4 @@
+import { HttpException, HttpStatus } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { RegisterWorkout } from "./entities/register_workout.entity";
@@ -22,14 +23,29 @@ export class RegisterWorkoutService {
                     workout : treino.id
                 }
 
-
-                await this.registerRepository.save(t);
+               await this.registerRepository.save(t);
             }
 
 
             
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    async delete(id : number)
+    {
+        try {
+            const response = this.registerRepository.delete({register: {
+                  id : id
+                }
+            });
+        return response;
+        } catch (error) {
+            throw new HttpException(
+                'Erro ao deletar',
+                HttpStatus.BAD_REQUEST,
+            );
         }
     }
 
