@@ -49,4 +49,35 @@ export class RegisterWorkoutService {
         }
     }
 
+    async getbyClient(id:number)
+    {
+        try {
+            const result = await this.registerRepository.query('select workout.name as Nome,workout.serie as Serie,exercice.nome as Exercicio,exercice_workout.peso as Peso, ' +
+            'exercice_workout.serie as serie, exercice_workout.repeticao as Repeticao, exercice_workout.descanco as Descanço, exercice_workout.observacao as Obs   from  register_workout '+
+            'inner join workout '+
+            'on workout.id = register_workout.workoutId '+
+            'inner join exercice_workout '+
+            'on exercice_workout.workoutId = register_workout.workoutId '+
+            'inner join exercice '+
+           ' on exercice.id = exercice_workout.exerciceId '+
+           ' where register_workout.registerId ='+ id  + ' order by workout.serie asc;')
+
+           const treino = result.reduce((groups, item) => {
+            const group = (groups[item.Serie] || []);
+              group.push(item);
+              groups[item.Serie] = group;
+              return groups;
+          }, {});
+  
+
+
+            return treino;
+        } catch (error) {
+            throw new HttpException(
+                'Erro ao buscar treinos',
+                HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
+
 }
