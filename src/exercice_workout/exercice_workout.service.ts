@@ -41,18 +41,35 @@ export class ExerciceWorkoutService  {
             const treino = body.treino_id
             const lista = body.lista;
 
+
             lista.map( async element =>{
-                const obj = {
-                    workout : treino,
-                    exercice : element.id,
-                    peso : element.peso ,
-                    serie :element.serie,
-                    descanco : element.descanco,
-                    observacao: element.observacao,
-                    repeticao: element.repeticao,
+                const id = element.id;
+                if(element.id_ex)
+                {
+                    const obj = {
+                        workout : treino,
+                        exercice : element.id_ex,
+                        peso : element.peso ,
+                        serie :element.serie,
+                        descanco : element.descanco,
+                        observacao: element.observacao,
+                        repeticao: element.repeticao,
+                    }
+                    const res = await this.ExeWorRepository.update(element.id,obj)
+                }else{
+
+                    const obj = {
+                        workout : treino,
+                        exercice : element.id,
+                        peso : element.peso ,
+                        serie :element.serie,
+                        descanco : element.descanco,
+                        observacao: element.observacao,
+                        repeticao: element.repeticao,
+                    }
+                    const res = await this.ExeWorRepository.save(obj)
                 }
 
-                await this.ExeWorRepository.save(obj)
             })
 
 

@@ -58,7 +58,7 @@ export class WorkoutService {
         try {
 
            const resp = await this.workoutRepository.query(
-                        'Select ew.id as id, ex.nome as nome, ew.serie as serie, ew.peso as peso, ew.descanco as descanco, ew.observacao as observacao,ew.repeticao as repeticao  '+
+                        'Select ew.id as id, ex.nome as nome, ew.serie as serie, ew.peso as peso, ew.descanco as descanco, ew.observacao as observacao,ew.repeticao as repeticao,ex.id id_ex  '+
                         'from workout wo inner join exercice_workout ew on ew.workoutId = wo.id '+
                         'inner join exercice ex on ex.id = ew.exerciceId '+
                         'where wo.id ='+ id + ' order by ew.id asc'
