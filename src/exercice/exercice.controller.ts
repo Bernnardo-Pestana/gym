@@ -25,7 +25,8 @@ export class ExerciceController {
     }
 
     @Get(":id")
-    async getbyID(@Param(":id") id :number){
+    async getbyID(@Param("id") id :number){
+
         return await this.exerciceService.getbyID(id);
     }
 
